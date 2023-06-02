@@ -3,10 +3,12 @@ package com.educandoweb.demo.config;
 
 import com.educandoweb.demo.entities.Category;
 import com.educandoweb.demo.entities.Order;
+import com.educandoweb.demo.entities.Product;
 import com.educandoweb.demo.entities.User;
 import com.educandoweb.demo.entities.enums.OrderStatus;
 import com.educandoweb.demo.repositories.CategoryRepository;
 import com.educandoweb.demo.repositories.OrderRepository;
+import com.educandoweb.demo.repositories.ProductRepository;
 import com.educandoweb.demo.repositories.UserRepository;
 import jakarta.persistence.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +32,20 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
+
+
+
     @Override
     public void run(String... args) throws Exception {
+
+        Product p1 = new Product(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, "");
+        Product p2 = new Product(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, "");
+        Product p3 = new Product(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, "");
+        Product p4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
+        Product p5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
 
         Category cat1 = new Category(null, "Eletronics");
         Category cat2 = new Category(null, "Books");
@@ -48,6 +62,7 @@ public class TestConfig implements CommandLineRunner {
         categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
         userRepository.saveAll(Arrays.asList(u1, u2)); //salve os dados no banco de dados
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+        productRepository.saveAll(Arrays.asList(p1, p2, p3,p4, p5));
 
 
 
